@@ -25,18 +25,31 @@ function mergeSort(arr) {
 
 // Takes in two sorted arrays and returns them merged into one
 function merge(arrA, arrB) {
-
   // Create an empty return array
+  // console.log("Arr A", arrA, "Arr B", arrB)
+  if(!arrA.length) return arrB;
+  if(!arrB.length) return arrA;
+
   let ans = [];
   // Point to the first value of each array
-  let left = arrA[0]
+  let indexA = 0;
+  let indexB = 0;
   // While there are still values in each array...
+
+  while(indexA < arrA.length || indexB < arrB.length){
     // Compare the first values of each array
-    // Add the smaller value to the return array
+    if(arrA[indexA] < arrB[indexB]){
+      // Add the smaller value to the return array
+      ans.push(arrA[indexA]);
+      indexA++;
+    } else {
+      ans.push(arrB[indexB])
+      indexB++;
+    }
     // Move the pointer to the next value in that array
-
+  }
   // Return the return array
-
+  return ans;
 }
 
 module.exports = [merge, mergeSort];
